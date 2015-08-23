@@ -3,7 +3,7 @@ var app = angular.module('myApp', []);
 app.controller('calcCtrl', ['$scope', function ($scope) {
 	$scope.result = '';
 	$scope.opp='';
-	$scope.validate = function (index) {
+	var validate = function (index) {
 		if($scope.result.length < 23 ) {
 			if( index === '.' && $scope.result.indexOf('.') >= 0 ) 	return false;
 		
@@ -15,16 +15,17 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 	};
 
 	$scope.addNumb = function (index) {
-		console.log($scope.validate(index));
-	
-		if ($scope.validate(index)) {
+
+		$scope.result = String($scope.result);
+		console.log(validate(index));
+		if (validate(index)) {
 
 			if($scope.employed){ $scope.result = ''; $scope.employed = false };
 			
 			$scope.result += index;
 			//console.log($scope.result);
 		}  else console.log('enter fail');
-		};
+	};
 
 	$scope.clear = function () {
 		$scope.result = '';
@@ -33,6 +34,7 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 	}
 
 	$scope.backNumb = function () {
+		$scope.result = String($scope.result);
 		$scope.result = $scope.result.slice(0,-1);
 		}
 
@@ -45,7 +47,7 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 		} else {
 			$scope.b = Number($scope.result);
 			switch($scope.opp) {
-				case '+':  $scope.result = $scope.a + $scope.b;
+				case '+': $scope.result = $scope.a + $scope.b;
 					break;
 				case '-': $scope.result = $scope.a - $scope.b;
 					break;
@@ -53,14 +55,19 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 					break;
 				case '/': $scope.result = $scope.a / $scope.b;
 					break;
+				case '=': $scope.opp = '';
+					break;
 				default: 
 					break;
 			}
-			$scope.a = Number($scope.result);
+			
+
+			$scope.a = $scope.result;
 			$scope.opp = index;
+			$scope.b = 0;
 		} 
 
-	console.log(index + ' first numb A= '+ $scope.a + 'numb b= '+ $scope.b + ' result= '+ $scope.result);
+	
 	
 	}
 
