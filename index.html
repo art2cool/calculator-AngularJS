@@ -23,8 +23,8 @@
 			<div class="col-md-4 col-sm-5 col-xs-6">
 				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('7')">7</button>
 				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('8')">8</button>
-				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('9')">8</button>	
-				<button type="button" class="btn btn-info" style="margin-top: 5px">*</button>
+				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('9')">9</button>	
+				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="action('*')">*</button>
 				</div>
 
 		</div>
@@ -33,7 +33,7 @@
 				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('4')">4</button>
 				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('5')">5</button>
 				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('6')">6</button>	
-				<button type="button" class="btn btn-info" style="margin-top: 5px">-</button>
+				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="action('-')">-</button>
 			</div>
 
 		</div>
@@ -42,7 +42,7 @@
 				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('1')">1</button>
 				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('2')">2</button>
 				<button type="button" class="btn btn-info" style="margin-top: 5px" ng-click="addNumb('3')">3</button>	
-				<button type="button" class="btn btn-info" style="margin-top: 5px; padding-left: 18px; padding-right: 18px">+</button>
+				<button type="button" class="btn btn-info" style="margin-top: 5px; padding-left: 18px; padding-right: 18px" ng-click="action('+')">+</button>
 			</div>
 
 		</div>
@@ -50,7 +50,7 @@
 			<div class="col-md-4 col-sm-5 col-xs-6">
 				<button type="button" class="btn btn-info" style="margin-top: 5px;padding-left: 47px; padding-right: 47px" ng-click="addNumb('0')">0</button>
 				<button type="button" class="btn btn-info" style="margin-top: 5px;padding-left: 21px; padding-right: 21px" ng-click="addNumb('.')"> , </button>	
-				<button type="button" class="btn btn-info" style="margin-top: 5px;padding-left: 19px; padding-right: 19px">  =  </button>
+				<button type="button" class="btn btn-info" style="margin-top: 5px;padding-left: 19px; padding-right: 19px" ng-click="action('=')">  =  </button>
 			</div>
 
 		</div>
