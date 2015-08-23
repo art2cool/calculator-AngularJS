@@ -2,7 +2,7 @@ var app = angular.module('myApp', []);
 
 app.controller('calcCtrl', ['$scope', function ($scope) {
 	$scope.result = '';
-	$scope.opp;
+	$scope.opp='';
 	$scope.validate = function (index) {
 		if($scope.result.length < 23 ) {
 			if( index === '.' && $scope.result.indexOf('.') >= 0 ) 	return false;
@@ -10,24 +10,26 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 			if ( index === '0' && $scope.result.substring(0,1) === '0' && $scope.result.substring(0,2) !== "0." ) return false;
 				
 			return true;
-						
+		
 		}
 	};
 
 	$scope.addNumb = function (index) {
+		console.log($scope.validate(index));
+	
 		if ($scope.validate(index)) {
 
 			if($scope.employed){ $scope.result = ''; $scope.employed = false };
 			
 			$scope.result += index;
-			console.log($scope.result);
-		} else {
-			console.log($scope.validate(index) );
-		}
-	};
+			//console.log($scope.result);
+		}  else console.log('enter fail');
+		};
 
 	$scope.clear = function () {
 		$scope.result = '';
+		$scope.opp = ''
+		$scope.a = '';
 	}
 
 	$scope.backNumb = function () {
@@ -36,7 +38,7 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 
 	$scope.action = function (index) {
 		$scope.employed = true;
-		
+
 		if (!$scope.opp) {
 			$scope.a = Number($scope.result); 
 			$scope.opp = index;
@@ -58,8 +60,8 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 			$scope.opp = index;
 		} 
 
-	console.log(index + ' first numb A= '+ $scope.a);
-	console.log(index + ' first numb b= '+ $scope.b);
+	console.log(index + ' first numb A= '+ $scope.a + 'numb b= '+ $scope.b + ' result= '+ $scope.result);
+	
 	}
 
 
