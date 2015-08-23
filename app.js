@@ -3,6 +3,7 @@ var app = angular.module('myApp', []);
 app.controller('calcCtrl', ['$scope', function ($scope) {
 	$scope.result = '';
 	$scope.opp='';
+	$scope.expretion = '';
 	var validate = function (index) {
 		if($scope.result.length < 23 ) {
 			if( index === '.' && $scope.result.indexOf('.') >= 0 ) 	return false;
@@ -19,11 +20,8 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 		$scope.result = String($scope.result);
 		console.log(validate(index));
 		if (validate(index)) {
-
 			if($scope.employed){ $scope.result = ''; $scope.employed = false };
-			
 			$scope.result += index;
-			//console.log($scope.result);
 		}  else console.log('enter fail');
 	};
 
@@ -31,6 +29,7 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 		$scope.result = '';
 		$scope.opp = ''
 		$scope.a = '';
+		$scope.expretion = '';
 	}
 
 	$scope.backNumb = function () {
@@ -39,11 +38,12 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 		}
 
 	$scope.action = function (index) {
-		$scope.employed = true;
 
+		$scope.employed = true;
 		if (!$scope.opp) {
 			$scope.a = Number($scope.result); 
 			$scope.opp = index;
+			$scope.expretion = $scope.a + ' ' + $scope.opp;
 		} else {
 			$scope.b = Number($scope.result);
 			switch($scope.opp) {
@@ -55,22 +55,15 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 					break;
 				case '/': $scope.result = $scope.a / $scope.b;
 					break;
-				case '=': $scope.opp = '';
+				case '=': $scope.opp = ''; $scope.b = '';
 					break;
 				default: 
 					break;
 			}
-			
-
+			$scope.expretion = $scope.a + ' ' + $scope.opp  +' ' + $scope.b + ' ='; 
 			$scope.a = $scope.result;
 			$scope.opp = index;
-			$scope.b = 0;
+			$scope.b = '';
 		} 
-
-	
-	
 	}
-
-
-
 }]);
