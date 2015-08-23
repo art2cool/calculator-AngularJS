@@ -1,9 +1,11 @@
 var app = angular.module('myApp', []);
 
 app.controller('calcCtrl', ['$scope', function ($scope) {
+
 	$scope.result = '';
 	$scope.opp='';
 	$scope.expretion = '';
+
 	var validate = function (index) {
 		if($scope.result.length < 23 ) {
 			if( index === '.' && $scope.result.indexOf('.') >= 0 ) 	return false;
@@ -11,7 +13,6 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 			if ( index === '0' && $scope.result.substring(0,1) === '0' && $scope.result.substring(0,2) !== "0." ) return false;
 				
 			return true;
-		
 		}
 	};
 
@@ -55,12 +56,12 @@ app.controller('calcCtrl', ['$scope', function ($scope) {
 					break;
 				case '/': $scope.result = $scope.a / $scope.b;
 					break;
-				case '=': $scope.opp = ''; $scope.b = '';
+				case '=':  { $scope.opp = ''; $scope.b = ''; }
 					break;
 				default: 
 					break;
 			}
-			$scope.expretion = $scope.a + ' ' + $scope.opp  +' ' + $scope.b + ' ='; 
+			$scope.expretion = $scope.a + ' ' + $scope.opp  + ' ' + $scope.b; 
 			$scope.a = $scope.result;
 			$scope.opp = index;
 			$scope.b = '';
